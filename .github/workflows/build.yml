@@ -1,5 +1,6 @@
 name: CI build
 on:
+  workflow_dispatch:  
   push:
     branches:
       - master
@@ -10,6 +11,7 @@ on:
       - master
       - r[0-9]+.*
     types: [opened, reopened, synchronize, labeled, unlabeled]
+
 env:
   STAGING_PROFILE_ID: 46f80d0729c92d
   DEPLOY_SNAPSHOT: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging') }}
